@@ -33,6 +33,9 @@ bags_checks_/
 └── README.md                    # Documentación principal del proyecto
 
 
+## Inicializar proyecto en /backend /frontend:
+- npm run dev
+
 ## Requisitos y Dependencias
 
 ### Frontend
@@ -47,11 +50,5 @@ bags_checks_/
 - CORS, dotenv, mysql2, socket.io
 - Nodemon (para desarrollo)
 
-## Configuración de Variables de Entorno
 
-### Frontend
-Crear un archivo `frontend/.env.local` con el siguiente contenido:
-```env
-NEXT_PUBLIC_API_URL=http://localhost:5000/api
-NEXT_PUBLIC_WEBSOCKET_URL=ws://localhost:5000
 
