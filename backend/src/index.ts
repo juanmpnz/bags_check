@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 import { createServer } from 'http';
 import { Server as SocketIOServer } from 'socket.io';
 import mysql from 'mysql2/promise';
+import maletasRoutes from '../src/rotues/maletas'
 
 // Cargar variables de entorno
 dotenv.config();
@@ -13,6 +14,7 @@ const app = express();
 // Middlewares
 app.use(cors());
 app.use(express.json());
+app.use('/api', maletasRoutes);
 
 // Configuración del puerto
 const PORT = process.env.PORT || 5000;
