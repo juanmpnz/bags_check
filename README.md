@@ -6,7 +6,7 @@ Este repositorio contiene el proyecto de seguimiento de maletas en aviones, comp
 
 ## Estructura inicial de carpetas del Proyecto
 
-bags_checks_/
+bags_checks/
 ├── frontend/                     # Proyecto Next.js en TypeScript
 │   ├── public/                   # Assets estáticos
 │   ├── src/                      # Código fuente
@@ -53,6 +53,20 @@ bags_checks_/
 - TypeScript
 - CORS, dotenv, mysql2, socket.io
 - Nodemon (para desarrollo)
+
+backend/
+├── src/
+│   ├── controllers/         # Lógica de manejo de endpoints
+│   ├── middlewares/         # Middlewares de Express
+│   ├── models/              # Modelos de datos y consultas (si usas un ORM o conexiones directas)
+│   ├── routes/              # Definición de rutas de la API REST
+│   ├── utils/               # Funciones de ayuda y configuraciones
+│   └── index.ts             # Punto de entrada del servidor
+├── .env                     # Variables de entorno para el backend
+├── package.json             # Dependencias y scripts
+├── tsconfig.json            # Configuración de TypeScript
+└── README.md                # Documentación específica del backend (opcional)
+
 
 
 

@@ -5,19 +5,19 @@ import {
   getMaletaState,
   listMaletasByVuelo,
 } from '../controllers/maletasController';
+import { authenticateToken } from '../middlewares/authMiddleware';
+import {
+  validateRegisterMaleta,
+  validateUpdateMaleta,
+  validateGetMaleta,
+  validateListMaletasByVuelo,
+} from '../validations/validations';
 
 const router = Router();
 
-// Registrar una nueva maleta
-router.post('/maletas', registerMaleta);
-
-// Actualizar el estado de una maleta
-router.put('/maletas/:id', updateMaletaState);
-
-// Obtener el estado actual de una maleta
-router.get('/maletas/:id', getMaletaState);
-
-// Listar maletas por vuelo
-router.get('/vuelos/:vueloId/maletas', listMaletasByVuelo);
+router.post('/maletas', authenticateToken, validateRegisterMaleta, registerMaleta);
+router.put('/maletas/:id', authenticateToken, validateUpdateMaleta, updateMaletaState);
+router.get('/maletas/:id', authenticateToken, validateGetMaleta, getMaletaState);
+router.get('/vuelos/:vueloId/maletas', authenticateToken, validateListMaletasByVuelo, listMaletasByVuelo);
 
 export default router;
