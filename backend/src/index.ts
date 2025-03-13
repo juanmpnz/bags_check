@@ -16,7 +16,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Rutas de autenticación
+// Rutas de autenticación y maletas
 app.use('/api/auth', authRoutes);
 app.use('/api', maletasRoutes);
 
@@ -51,25 +51,35 @@ app.get('/api/test', async (req, res) => {
 const httpServer = createServer(app);
 const io = new SocketIOServer(httpServer, {
   cors: {
-    origin: '*', // Ajusta el origen en producción para mayor seguridad
+    origin: '*', // Ajusta el origen en producción
   },
 });
 
-// Configurar eventos de Socket.io
+// Manejar conexiones con Socket.io
 io.on('connection', (socket) => {
   console.log('A user connected:', socket.id);
 
-  // Ejemplo: emitir un evento de bienvenida al conectarse
+  // Emitir un mensaje de bienvenida al conectarse
   socket.emit('welcome', { message: 'Bienvenido al servidor WebSocket' });
+
+  // Ejemplo: escuchar un evento "updateMaleta" y emitir un evento "maletaUpdate" a todos
+  socket.on('updateMaleta', (data) => {
+    console.log('updateMaleta event received:', data);
+    // Procesar los datos o actualizarlos en la base de datos si es necesario
+    io.emit('maletaUpdate', data);
+  });
 
   socket.on('disconnect', () => {
     console.log('User disconnected:', socket.id);
   });
-
-  // Agrega otros manejadores de eventos según las necesidades del proyecto
 });
 
-// Iniciar el servidor
+// Función auxiliar para emitir actualizaciones a todos los clientes
+export const emitMaletaUpdate = (data: any): void => {
+  io.emit('maletaUpdate', data);
+};
+
+// Iniciar el servidor HTTP
 httpServer.listen(PORT, () => {
   console.log(`Backend server running on port ${PORT}`);
 });

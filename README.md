@@ -5,7 +5,7 @@ Este repositorio contiene el proyecto de seguimiento de maletas en aviones, comp
 - **Backend:** API REST y servidor WebSocket desarrollados en Node.js con Express y TypeScript.
 
 ## Estructura inicial de carpetas del Proyecto
-
+```
 bags_checks/
 ├── frontend/                     # Proyecto Next.js en TypeScript
 │   ├── public/                   # Assets estáticos
@@ -36,7 +36,7 @@ bags_checks/
 └── README.md                     # Documentación principal del proyecto
 └── LICENCE                       # Licencia del proyecto
 └── prettier.config.json          # Formateo de codigo
-
+```
 ## Inicializar proyecto en /backend /frontend:
 - npm run dev
 
@@ -46,7 +46,7 @@ bags_checks/
 - Next.js (última versión)
 - TypeScript
 - Axios, Socket.io-client
-- [Windmill Dashboard](https://github.com/estevanmaito/windmill-dashboard) (opcional, para UI basada en Tailwind CSS)
+- [Windmill Dashboard]
 
 ### Backend
 - Node.js con Express (última versión)
@@ -54,6 +54,7 @@ bags_checks/
 - CORS, dotenv, mysql2, socket.io
 - Nodemon (para desarrollo)
 
+```
 backend/
 ├── src/
 │   ├── controllers/         # Lógica de manejo de endpoints
@@ -66,7 +67,6 @@ backend/
 ├── package.json             # Dependencias y scripts
 ├── tsconfig.json            # Configuración de TypeScript
 └── README.md                # Documentación específica del backend (opcional)
-
-
+```
 
 
