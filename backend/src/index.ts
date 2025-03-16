@@ -79,6 +79,19 @@ export const emitMaletaUpdate = (data: any): void => {
   io.emit('maletaUpdate', data);
 };
 
+// Simular eventos automáticos cada 5 segundos
+setInterval(() => {
+  const simulatedData = {
+    maletaId: 1,
+    estado_actual: 'Simulado: En tránsito',
+    current_location: 'Simulado: Cinta 3',
+    updatedAt: new Date().toISOString(),
+  };
+  io.emit('maletaUpdate', simulatedData);
+  console.log('Evento simulado emitido:', simulatedData);
+}, 5000);
+
+
 // Iniciar el servidor HTTP
 httpServer.listen(PORT, () => {
   console.log(`Backend server running on port ${PORT}`);
